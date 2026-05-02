@@ -1,0 +1,57 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+
+# =========================
+# Virtual Environment
+# =========================
+venv/
+.env
+
+# Specific env files
+backend/.env
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Database (local only)
+# =========================
+*.db
+
+# =========================
+# Node (future frontend)
+# =========================
+node_modules/
+
+# =========================
+# Build / temp
+# =========================
+dist/
+build/
+
+# =========================
+# Azure / Infra temp (IMPORTANT)
+# =========================
+*.publishsettings
+*.pubxml
+
+# Optional: ignore local terraform/cache if added later
+.terraform/
