@@ -1,5 +1,7 @@
+
 flask
 flask_sqlalchemy
-flask_login
+pyodbc
+openai
 python-dotenv
-passlib[bcrypt]
+gunicorn
