@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:5000";
+const BASE_URL = "https://capstone-ai-app-rohith123.azurewebsites.net";
 
 // LOGIN
 function login() {
@@ -18,10 +18,7 @@ function login() {
       alert("Invalid credentials");
     } else {
       alert("Login successful");
-
-      // ✅ store user session (temporary)
       localStorage.setItem("user_id", data.user_id);
-
       window.location.href = "chat.html";
     }
   })
@@ -52,11 +49,11 @@ function signup() {
   .catch(err => console.error(err));
 }
 
-// CHAT (placeholder for now)
+// CHAT
 function sendMessage() {
   const msg = document.getElementById("msg").value;
 
-  fetch("http://127.0.0.1:5000/ai/chat", {
+  fetch(`${BASE_URL}/ai/chat`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -66,5 +63,6 @@ function sendMessage() {
   .then(res => res.json())
   .then(data => {
     document.getElementById("response").innerText = data.response;
-  });
+  })
+  .catch(err => console.error(err));
 }
