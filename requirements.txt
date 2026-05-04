@@ -1,4 +1,3 @@
-
 flask
 flask_sqlalchemy
 flask-cors
@@ -6,3 +5,4 @@ pyodbc
 openai
 python-dotenv
 gunicorn
+passlib
