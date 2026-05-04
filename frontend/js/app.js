@@ -66,3 +66,42 @@ function sendMessage() {
   })
   .catch(err => console.error(err));
 }
+
+function loadTasks() {
+  const user_id = localStorage.getItem("user_id");
+
+  fetch(`${BASE_URL}/tasks/${user_id}`)
+    .then(res => res.json())
+    .then(tasks => {
+      const list = document.getElementById("taskList");
+      list.innerHTML = "";
+
+      tasks.forEach(task => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${task.title}
+          <button onclick="deleteTask(${task.id})">❌</button>
+        `;
+        list.appendChild(li);
+      });
+    });
+}
+
+function addTask() {
+  const title = document.getElementById("taskTitle").value;
+  const user_id = localStorage.getItem("user_id");
+
+  fetch(`${BASE_URL}/tasks`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ title, user_id })
+  }).then(() => loadTasks());
+}
+
+function deleteTask(taskId) {
+  fetch(`${BASE_URL}/tasks/${taskId}`, {
+    method: "DELETE"
+  }).then(() => loadTasks());
+}
